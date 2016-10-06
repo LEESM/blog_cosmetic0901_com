@@ -18,7 +18,8 @@ from django.contrib import admin
 from post import views
 
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
-	url(r'^admin/', admin.site.urls),
-	url(r'^post/',include('post.urls'))
+    url(r'^$', views.index, name='index'),
+    url(r'^admin/', admin.site.urls),
+    url(r'^summernote/', include('django_summernote.urls')),
+    url(r'^post/',include('post.urls'))
 ]

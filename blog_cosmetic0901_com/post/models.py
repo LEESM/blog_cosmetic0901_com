@@ -11,7 +11,7 @@ class Category(models.Model):
 def get_image_path(instance, filename):
 	return os.path.join('item_images', str(instance.item_id), filename)
 
-class Item(models.Model):
+class Post(models.Model):
 	subject = models.CharField(max_length=100)
 	description = models.CharField(max_length=100,blank=True)
 	content = models.TextField(blank=True)
