@@ -10,7 +10,7 @@ class Category(models.Model):
 
 def upload_to(instance, filename):
     path_arr = filename.split('/')
-    return '%s/%s' %(instance.subject, path_arr[-1])
+    return 'post/%s/%s' %(instance.subject, path_arr[-1])
 
 class Post(models.Model):
 	subject = models.CharField(max_length=100)
