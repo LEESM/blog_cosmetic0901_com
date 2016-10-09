@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>타이틀</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'bs3/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,9 +20,60 @@
     <![endif]-->
   </head>
   <body>
-  {% block content %}{% endblock %}
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">블로그</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+            </div>
+            <button type="submit" class="btn btn-default">검색!</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">쇼핑몰 구경하기</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+
+    <div class="container">
+      <ol class="breadcrumb">
+        {% block breadcrumb %}{% endblock %}
+      </ol>
+      <div class="row">
+      <div id="main_category" class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+        {% include "menu.html" %}
+      </div>
+      <div id="main_content" class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
+        {% block content %}{% endblock %}
+      </div>
+      <div id="main_banner" class="col-lg-4 col-md-3 col-sm-4 hidden-xs">
+        {% include "banner.html" %}
+      </div>
+      </div>
+
+
+      
+
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
     <script src="{% static 'bs3/js/bootstrap.min.js' %}"></script>
+    <script src="https://use.fontawesome.com/96ad52718b.js"></script>
   </body>
 </html>

@@ -1,0 +1,28 @@
+ul{
+	list-style:none;
+	padding: 0;
+}
+.text-center{
+	text-align:center;
+}
+#main_category{
+	height:100px;
+}
+#main_content{
+
+}
+#main_banner{
+
+}
+#main_panel_footer_right{
+	padding-left:0;
+	color:#888;
+}
+#main_panel_footer_right p{
+padding-top:8px;
+margin-bottom:0;
+color:#aaa;
+}
+.no_margin{
+	margin:0;
+}

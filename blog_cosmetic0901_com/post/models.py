@@ -3,6 +3,7 @@ from django.conf import settings
 
 class Category(models.Model):
 	category_name = models.CharField(max_length=50)
+	url_name = models.CharField(max_length=50, blank=True, default='')
 	order = models.IntegerField(default=0)
 
 	def __str__(self):
@@ -15,6 +16,7 @@ def upload_to(instance, filename):
 class Post(models.Model):
 	subject = models.CharField(max_length=100)
 	description = models.CharField(max_length=100,blank=True)
+	url_name = models.CharField(max_length=100, blank=True, default='')
 	content = models.TextField(blank=True)
 	image = models.ImageField(blank=True, upload_to=upload_to)
 	author = models.ForeignKey(settings.AUTH_USER_MODEL)

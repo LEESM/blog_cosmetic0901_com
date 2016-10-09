@@ -1,6 +1,65 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block title %}
+안녕?
+{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="/">Home</a></li>
+<li><a href="#">Library</a></li>
+<li class="active">Data</li>
+{% endblock%}
+
 {% block content %}
-내용
+
+	{% for post in posts %}
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<h3 class="panel-title">{{ post.author.profile.nick }}</h3>
+			<p class="no_margin">{{ post.author.profile.nick }}</p>
+		</div>
+
+		<div class="panel-body">
+			{% if post.image %}
+			<a href="/">
+				<img src="{{post.image.url}}" class="img-responsive">
+			</a>
+			{% endif %}
+			<p class="no_margin">{{post.description}}...  <a href="/">더보기</a></p>
+		</div>
+
+		<div class="panel-footer">
+			<div class="row">
+				<div class="col-xs-2">
+					<img class="img-responsive" src="{{ post.author.profile.thumbnail.url }}" />
+				</div>
+				<div class="col-xs-10" id="main_panel_footer_right">
+					<h3 class="panel-title">{{ post.author.profile.nick }}</h3>
+					<p>{{ post.pub_date|date:"Y-m-d" }}</p>
+				</div>
+			</div>			
+		</div>
+	</div>
+	{% endfor %}
+
+	<div class="text-center">
+		<div class="btn-group" role="group" aria-label="paginator">
+			{% if posts.has_previous %}
+			<a href="?page={{ posts.previous_page_number }}" type="button" class="btn btn-default">
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</a>
+			{% endif %}
+			<a type="button" class="btn btn-default">{{ posts.number }}</a>
+			{% if posts.has_next %}
+			<a href="?page={{ posts.next_page_number }}" type="button" class="btn btn-default">
+				<i class="fa fa-angle-right" aria-hidden="true"></i>
+			</a>
+			{% endif %}
+		</div>
+	</div>
+
+
 {% endblock %}
