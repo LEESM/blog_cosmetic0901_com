@@ -26,3 +26,14 @@ color:#aaa;
 .no_margin{
 	margin:0;
 }
+#footer_div{
+	width:100%;
+	background-color:#2a2730;
+	color:white !important;
+	padding-top:30px;
+	padding-bottom:30px;
+	margin-top:30px;
+}
+.gray{
+	color:#99979c;
+}

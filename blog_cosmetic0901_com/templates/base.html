@@ -11,6 +11,7 @@
     <!-- Bootstrap -->
     <link href="{% static 'bs3/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'font/NanumBarunGothic/nanumbarungothic.css' %}" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,47 +31,33 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">블로그</a>
+          <a class="navbar-brand" href="/">화장품연구공원 블로그</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <form class="navbar-form navbar-left">
+          <form class="navbar-form navbar-left hidden">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="검색어를 입력하세요">
             </div>
             <button type="submit" class="btn btn-default">검색!</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">쇼핑몰 구경하기</a></li>
+            <li><a href="http://cosmetic0901.com">쇼핑몰 구경하기</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
 
-
     <div class="container">
-      <ol class="breadcrumb">
         {% block breadcrumb %}{% endblock %}
-      </ol>
-      <div class="row">
-      <div id="main_category" class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-        {% include "menu.html" %}
-      </div>
-      <div id="main_content" class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
         {% block content %}{% endblock %}
-      </div>
-      <div id="main_banner" class="col-lg-4 col-md-3 col-sm-4 hidden-xs">
-        {% include "banner.html" %}
-      </div>
-      </div>
 
 
-      
 
     </div>
 
-
+    {% include "footer.html" %}
 
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
     <script src="{% static 'bs3/js/bootstrap.min.js' %}"></script>

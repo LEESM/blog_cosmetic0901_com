@@ -1,34 +1,46 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+
 {% block title %}
-안녕?
+{{ title }}
 {% endblock %}
 
+
 {% block breadcrumb %}
-<li><a href="/">Home</a></li>
-<li><a href="#">Library</a></li>
-<li class="active">Data</li>
+<ol class="breadcrumb">
+	{% if category %}
+		<li><a href="/">Home</a></li>
+		<li class="active">{{category}}</li>
+	{% else %}
+		<li class="active">Home</li>
+	{% endif %}
+</ol>
 {% endblock%}
 
+
 {% block content %}
+<div class="row">
+	<div id="main_category" class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+		{% include "menu.html" %}
+	</div>
+	<div id="main_content" class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
 
 	{% for post in posts %}
-
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			<h3 class="panel-title">{{ post.author.profile.nick }}</h3>
-			<p class="no_margin">{{ post.author.profile.nick }}</p>
+			<h3 class="panel-title">{{ post.subject }}</h3>
+			<p class="no_margin">{{ post.description }}</p>
 		</div>
 
 		<div class="panel-body">
 			{% if post.image %}
-			<a href="/">
+			<a href="{% url 'post' post.url_name%}">
 				<img src="{{post.image.url}}" class="img-responsive">
 			</a>
 			{% endif %}
-			<p class="no_margin">{{post.description}}...  <a href="/">더보기</a></p>
+			<p class="no_margin">{{post.description}}...  <a href="{% url 'post' post.url_name%}">더보기</a></p>
 		</div>
 
 		<div class="panel-footer">
@@ -44,7 +56,6 @@
 		</div>
 	</div>
 	{% endfor %}
-
 	<div class="text-center">
 		<div class="btn-group" role="group" aria-label="paginator">
 			{% if posts.has_previous %}
@@ -61,5 +72,9 @@
 		</div>
 	</div>
 
-
+	</div>
+	<div id="main_banner" class="col-lg-4 col-md-3 col-sm-4 hidden-xs">
+		{% include "banner.html" %}
+	</div>
+</div>
 {% endblock %}

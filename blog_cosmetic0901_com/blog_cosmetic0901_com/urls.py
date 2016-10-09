@@ -21,10 +21,9 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^category/(?P<url_name>[\w]+)/$', views.category, name='category'),
-    url(r'^test/', views.index),
+    url(r'^category/(?P<url_name>[\w-]+)/$', views.category, name='category'),
+    url(r'^post/(?P<url_name>[\w-]+)/$', views.post, name='post'),
     url(r'^admin/', admin.site.urls),
     url(r'^summernote/', include('django_summernote.urls')),
-    url(r'^post/',include('post.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

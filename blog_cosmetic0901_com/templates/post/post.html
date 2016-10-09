@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li><a href="{% url 'category' post.category.url_name %}">{{post.category}}</a></li>
+	<li class="active">{{ post }}</li>
+</ol>
+{% endblock%}
+
+
+{% block content %}
+<div class="row">
+	<div id="main_content" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+	{{ post.subject }}
+	{{ post.content|safe }}
+	</div>
+	<div id="main_banner" class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
+		{% include "banner.html" %}
+	</div>
+</div>
+{% endblock %}
